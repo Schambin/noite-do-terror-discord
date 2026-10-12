@@ -9,7 +9,7 @@ export default function HistoryList() {
   const items = Object.entries(ev.data.history || {}).map(([id, h]) => ({ id, ...h })).sort((a, b) => b.ts - a.ts).slice(0, 20);
   if (!items.length) return null;
   return (
-    <div className="hist" data-testid="history">
+    <div className="hist">
       <h4>Histórico</h4>
       <ul>
         {items.map(h => (

@@ -20,7 +20,7 @@ function SyncBar({ status, connected }) {
     online: connected ? ["#22C55E", "Ao vivo: cartas e roleta sincronizadas com todos."] : ["#EF4444", "Sem conexão. Tentando reconectar…"],
     erro: ["#EF4444", "Não foi possível conectar ao banco de dados. Confira a configuração do Supabase."],
   }[status];
-  return <div className="syncBar" data-testid="sync" data-connected={status === "online" && connected}><span><span className="dotS" style={{ background: color }} />{text}</span></div>;
+  return <div className="syncBar"><span><span className="dotS" style={{ background: color }} />{text}</span></div>;
 }
 
 export default function Roulette() {

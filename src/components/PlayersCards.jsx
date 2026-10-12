@@ -21,12 +21,12 @@ export default function PlayersCards() {
   const touched = [...new Set([...Object.keys(bans), ...Object.keys(saves)])].sort((a, b) => a.localeCompare(b));
 
   return (
-    <div className="box" data-testid="cards">
+    <div className="box">
       <h3>Cartas de cada um</h3>
       {ordered.map(p => {
         const ed = canEdit(ev, p.id), left = SKIPS - (p.skipsUsed || 0);
         return (
-          <div key={p.id} className="player" data-player={p.name}>
+          <div key={p.id} className="player">
             <div className="phead">
               <PlayerTag player={p} /><span className="pname">{p.name}</span>
               {p.id === ev.me && <span className="youTag">você</span>}
@@ -38,7 +38,7 @@ export default function PlayersCards() {
             <div className="cards" style={{ gap: "14px 22px" }}>
               <div className="cardGroup" title={`Cartas de pular restantes: ${left}`}>
                 {Array.from({ length: SKIPS }, (_, i) => <JokerCard key={i} type="skip" used={i >= left} />)}
-                <span className="lbl" style={{ fontSize: ".8rem", color: "var(--muted)" }} data-testid="skips-left">Pular: {left}/{SKIPS}</span>
+                <span className="lbl" style={{ fontSize: ".8rem", color: "var(--muted)" }}>Pular: {left}/{SKIPS}</span>
               </div>
               {SLOTS.map(([type, label]) => (
                 <div key={type} className="cardGroup">
@@ -46,7 +46,7 @@ export default function PlayersCards() {
                   <div className="cardSlot">
                     <span className="lbl">{label}</span>
                     {p[type] ? <>
-                      <span className="place" data-testid={`${type}-place`}>{p[type]}</span>
+                      <span className="place">{p[type]}</span>
                       {ed && <button className="linkBtn" style={{ alignSelf: "flex-start" }} onClick={() => report(removeCard(p.id, type))}>retirar carta</button>}
                     </> : ed ? (
                       <select value="" aria-label={`Colocar carta de ${type === "ban" ? "banir" : "salvar"}`} onChange={e => e.target.value && report(putCard(p.id, type, e.target.value))}>

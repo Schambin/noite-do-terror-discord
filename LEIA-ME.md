@@ -42,8 +42,7 @@ Antes do evento, faça um teste real com 2 ou 3 pessoas. No fim do teste, o ADM 
 ```bash
 npm install
 npm run dev        # abre em http://localhost:5173
-npm test           # testes da lógica (roleta, cartas, concorrência)
 npm run build      # gera a pasta dist
 ```
 
-O teste com vários aparelhos ao mesmo tempo (`tests/e2e`) roda contra um Supabase local; veja [`tests/e2e/README.md`](tests/e2e/README.md).
+Vai mexer no código com o Claude? Ele lê o [`INTRODUCAO.md`](INTRODUCAO.md) antes (o `CLAUDE.md` aponta para ele). Se estiver usando o Claude pelo chat, cole esse arquivo na conversa primeiro.

@@ -49,7 +49,7 @@ export default function AdminPanel() {
     : `${active.length} ativo(s). Jogos sem valor dividem os ${(100 - typed).toFixed(2).replace(".", ",")}% restantes.` + extraNote;
 
   return (
-    <div data-testid="admin">
+    <div>
       <p className="countHead" style={{ margin: "0 0 6px" }}>Quem entra na roleta</p>
       <p className="facet-note" style={{ margin: "0 0 16px", maxWidth: "60ch" }}>Monte o grupo com os filtros. Desmarque um jogo para tirá-lo do sorteio, ajuste a chance de cada um ou bana os jogos que já foram jogados. Tudo aqui vale para todos na hora.</p>
 
@@ -81,7 +81,7 @@ export default function AdminPanel() {
           const isBanned = banned.has(g.id), isOff = off.has(g.id), cb = cards.bans[g.name], cs = cards.saves[g.name];
           const value = g.id in drafts ? drafts[g.id] : (config.pct[g.id] ?? "");
           return (
-            <div key={g.id} className={"rrow" + (isBanned ? " banned" : "") + (cb && !isBanned ? " cardban" : "")} data-game={g.name}>
+            <div key={g.id} className={"rrow" + (isBanned ? " banned" : "") + (cb && !isBanned ? " cardban" : "")}>
               <input type="checkbox" className="rtoggle" checked={!isOff && !isBanned} disabled={isBanned} aria-label="Incluir na roleta"
                 onChange={e => save(c => ({ ...c, off: toggleIn(c.off, g.id, !e.target.checked) }))} />
               <GameLink className="rname" name={g.name} />

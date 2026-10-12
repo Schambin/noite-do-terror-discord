@@ -37,7 +37,7 @@ export default function AccountBox() {
         </div>
       </div>
     ) : (
-      <div className="box" data-testid="account">
+      <div className="box">
         <h3>Sua conta</h3>
         <div className="tabsMini">
           <button aria-pressed={tab === "entrar"} onClick={() => switchTab("entrar")}>Entrar</button>

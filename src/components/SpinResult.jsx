@@ -16,7 +16,7 @@ export default function SpinResult() {
   }
 
   return <>
-    <div className="winner" aria-live="polite" data-testid="winner" data-state={s.state}>
+    <div className="winner" aria-live="polite">
       <span className="wlabel">{label}{s.state === "skipped" && <PlayerTag player={by} showName />}</span>
       <GameLink className="wname" name={s.winner} style={s.state === "skipped" ? { textDecoration: "line-through" } : undefined} />
     </div>
@@ -30,7 +30,7 @@ export default function SpinResult() {
           {ev.players.map(p => {
             const left = SKIPS - (p.skipsUsed || 0), mine = canEdit(ev, p.id);
             return (
-              <button key={p.id} className="skipBtn" data-player={p.name} disabled={busy || !mine || left <= 0}
+              <button key={p.id} className="skipBtn" disabled={busy || !mine || left <= 0}
                 title={mine ? "Usar carta de pular" : "Só o próprio participante pode usar"} onClick={() => skip(p.id)}>
                 <PlayerTag player={p} showName /> · pular ({left})
               </button>

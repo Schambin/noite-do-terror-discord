@@ -35,7 +35,7 @@ export function finalWheel(pool, { bans, saves }) {
     .filter(([, w]) => w > 0);
 }
 
-// Sorteio ponderado. rnd é injetável para testes.
+// Sorteio ponderado (rnd: gerador de número aleatório entre 0 e 1).
 export function pickWeighted(fw, rnd = Math.random) {
   const tot = fw.reduce((a, [, w]) => a + w, 0);
   if (!fw.length || tot <= 0) return null;
