@@ -1,0 +1,28 @@
+import { useState } from "react";
+import Catalog from "./components/Catalog.jsx";
+import Roulette from "./components/Roulette.jsx";
+
+export default function App() {
+  const [tab, setTab] = useState("cat");
+  return (
+    <>
+      <header>
+        <h1>Noite do Terror</h1>
+        <p className="lede">O catálogo reúne todos os jogos co-op do evento. A roleta sorteia um jogo entre os que o ADM escolher, com chances ajustáveis e as cartas de cada participante.</p>
+      </header>
+
+      <div className="tabs" role="tablist" aria-label="Seções">
+        <button className="tab" id="tab-cat" role="tab" aria-selected={tab === "cat"} aria-controls="panel-cat" onClick={() => setTab("cat")}>🔎 Catálogo</button>
+        <button className="tab" id="tab-rou" role="tab" aria-selected={tab === "rou"} aria-controls="panel-rou" onClick={() => setTab("rou")}>🎡 Roleta</button>
+      </div>
+
+      {/* as duas abas ficam montadas para a roleta acompanhar o giro mesmo no catálogo */}
+      <section className={"panel" + (tab === "cat" ? " active" : "")} id="panel-cat" role="tabpanel" aria-labelledby="tab-cat"><Catalog /></section>
+      <section className={"panel" + (tab === "rou" ? " active" : "")} id="panel-rou" role="tabpanel" aria-labelledby="tab-rou"><Roulette /></section>
+
+      <footer>
+        <p>Jogadores, temas e tamanhos são aproximados e podem mudar com atualizações. Tamanho é o espaço em disco informado nos requisitos da Steam. Jogos com aviso amarelo só podem ser jogados depois que o desenvolvedor libera o acesso.</p>
+      </footer>
+    </>
+  );
+}
